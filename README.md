@@ -6,7 +6,7 @@ Selamat datang! Repository ini berisi materi pembelajaran **Pemrograman Berbasis
 | ------------ | ---------------- |
 | **Nama**     | Saka Nabil       |
 | **NIM**      | 2341720108       |
-| **Kelas**    | TI-3G            |
+| **Kelas**    | TI-3F            |
 | **Matkul**   | PBF              |
 | **Semester** | 6                |
 
