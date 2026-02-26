@@ -1,22 +1,12 @@
-import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const Produk = () => {
-  const { push } = useRouter();
+export default function ProdukRedirect() {
+  const router = useRouter();
 
   useEffect(() => {
-    const isLogin = localStorage.getItem("isLogin");
-    if (!isLogin) {
-      push("/auth/login");
-    }
-  }, [push]);
+    router.replace("/views/produk");
+  }, [router]);
 
-  return (
-    <div>
-      <h1>Halaman Produk</h1>
-      <p>Anda sudah login!</p>
-    </div>
-  );
-};
-
-export default Produk;
+  return null;
+}
