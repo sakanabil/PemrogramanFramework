@@ -8,15 +8,21 @@ export async function middleware(request: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (token) {
-    return NextResponse.next();
-  } else {
+  const pathname = request.nextUrl.pathname;
+
+  // Cek apakah user sudah login
+  if (!token) {
     return NextResponse.redirect(new URL("/", request.url));
   }
-  //   return NextResponse.redirect(new URL("/", request.url));
-  //   return NextResponse.next();
+
+  // Cek apakah user mencoba akses /admin dengan role bukan admin
+  if (pathname === "/admin" && token.role !== "admin") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/produk", "/about", "/profil"],
+  matcher: ["/produk", "/about", "/profil", "/admin"],
 };

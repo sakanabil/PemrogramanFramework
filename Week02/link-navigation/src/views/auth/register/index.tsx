@@ -14,7 +14,7 @@ const TampilanRegister = () => {
     const form = event.currentTarget;
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email") as string;
-    const fullname = formData.get("Fullname") as string;
+    const fullname = formData.get("fullname") as string;
     const password = formData.get("Password") as string;
 
     // Validasi client-side
@@ -69,15 +69,15 @@ const TampilanRegister = () => {
 
           <div className={style.register__form__item}>
             <label
-              htmlFor="Fullname"
+              htmlFor="fullname"
               className={style.register__form__item__label}
             >
               Fullname
             </label>
             <input
               type="text"
-              id="Fullname"
-              name="Fullname"
+              id="fullname"
+              name="fullname"
               placeholder="Fullname"
               className={style.register__form__item__input}
             />

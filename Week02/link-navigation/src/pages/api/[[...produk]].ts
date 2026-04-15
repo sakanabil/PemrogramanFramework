@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
-  retrieveDataById,
+  retrieveDataByID,
   retrieveProducts,
 } from "../../utils/db/servicefirebase";
 
@@ -15,7 +15,7 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
   if (req.query.produk![1]) {
-    const data = await retrieveDataById("products", req.query.produk![1]);
+    const data = await retrieveDataByID("products", req.query.produk![1]);
     res.status(200).json({ status: true, status_code: 200, data: data });
   } else {
     const data = await retrieveProducts("products");
