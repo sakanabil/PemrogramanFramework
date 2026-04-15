@@ -20,9 +20,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
+  // Cek apakah user mencoba akses /editor dengan role bukan editor
+  if (pathname === "/editor" && token.role !== "editor") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/produk", "/about", "/profil", "/admin"],
+  matcher: ["/produk", "/about", "/profil", "/admin", "/editor"],
 };
