@@ -1,13 +1,19 @@
 import styles from "./navbar.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Script from "next/dist/client/script";
 
 const Navbar = () => {
   const { data }: any = useSession();
   return (
     <div className={styles.navbar}>
-      <div className={styles.navbar__brand}>MyApp</div>
-
+      {/* <div className={styles.navbar__brand}>MyApp</div> */}
+      <div className={styles.navbar__brand} id="title"></div>
+      <Script id="title-script" strategy="lazyOnload">
+        {`
+          document.getElementById('title').innerHTML = 'MyApp';
+        `}
+      </Script>
       <div className={styles.navbar__right}>
         {data ? (
           <>
@@ -17,8 +23,8 @@ const Navbar = () => {
                 <Image
                   src={data.user.image}
                   alt={data.user.fullname}
-                  width={42}
-                  height={42}
+                  width={50}
+                  height={50}
                   className={styles.navbar__user__image}
                   priority
                 />
